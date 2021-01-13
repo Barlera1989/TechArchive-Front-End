@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 
-const Route = () => {
+const Routes = () => {
   return (
     <Switch>
       <Route exact path="/"></Route>
@@ -14,4 +14,4 @@ const Route = () => {
     </Switch>
   );
 };
-export default Route;
+export default Routes;
