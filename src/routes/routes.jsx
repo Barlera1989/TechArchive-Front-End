@@ -1,10 +1,13 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import Header from "../components/header-desk/header-desk.jsx";
 
 const Routes = () => {
   return (
     <Switch>
-      <Route exact path="/"></Route>
+      <Route exact path="/">
+        <Header />
+      </Route>
       <Route exact path="profile"></Route>
       <Route exact path="login"></Route>
       <Route exact path="sign_up"></Route>
