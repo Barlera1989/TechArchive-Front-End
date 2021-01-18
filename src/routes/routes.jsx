@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Login from "../pages/login";
 import SignUp from "../pages/sign-up";
+import CreateNews from "../pages/create-news";
 
 const Routes = () => {
   return (
@@ -15,7 +16,9 @@ const Routes = () => {
         <SignUp />
       </Route>
       <Route exact path="/approve_news"></Route>
-      <Route exact path="/post_news"></Route>
+      <Route exact path="/post_news">
+        <CreateNews />
+      </Route>
       <Route exact path="/ranking"></Route>
     </Switch>
   );

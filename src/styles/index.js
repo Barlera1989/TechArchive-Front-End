@@ -24,3 +24,17 @@ export const SubTitle = styled.p`
   color: black;
   margin-top: -60px;
 `;
+
+export const FormNewsDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #dad0f0;
+`;
+
+export const FormsDiv = styled.div`
+  display: flex;
+  width: 80vw;
+  justify-content: center;
+`;
