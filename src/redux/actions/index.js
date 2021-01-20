@@ -17,6 +17,11 @@ export const setAuthenticationTrue = () => ({
   type: TRUE
 });
 
+export const logout = () => (dispatch) => {
+  localStorage.clear();
+  dispatch({ type: LOGOUT });
+  dispatch(setAuthenticationFalse())
+};
 
 
 export const requestLogin = (login, password) => (dispatch) => {

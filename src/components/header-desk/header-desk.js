@@ -46,6 +46,17 @@ export const StyledPublishButton = styled.button`
   font-weight: bold;
 `;
 
+export const StyledPublishContent = styled.div`
+  color: white;
+  font-weight: bold;
+  margin: 20px;
+  :hover{
+    cursor: pointer
+  }
+`;
+
+
+
 // NavBar
 export const StyledNavBar = styled.div`
   /* border: 1px solid black; */
