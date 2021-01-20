@@ -22,7 +22,7 @@ const HeaderMob = () => {
           <StyledSearchInput />
           <StyledSearchImg />
         </StyledSearchDiv>
-        <StyledPublishButton>Publish Now</StyledPublishButton>
+        <StyledPublishButton>Login <br></br> SignUp </StyledPublishButton>
       </StyledUpperContent>
       <StyledNavBar>
         <StyledLeftWing>

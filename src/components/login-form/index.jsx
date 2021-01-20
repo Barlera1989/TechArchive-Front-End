@@ -5,6 +5,9 @@ import * as Yup from "yup";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { Button } from "@material-ui/core";
+import { useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { requestLogin } from '../../redux/actions/index'
 
 const theme = createMuiTheme({
   palette: {
@@ -14,12 +17,29 @@ const theme = createMuiTheme({
   },
 });
 
+
+
 const LoginSchema = Yup.object({
   login: Yup.string().email("Invalid E-mail").required("Field can't be empty"),
   password: Yup.string().required("Field can't be empty"),
 });
 
+
+
+
+
 const LoginForm = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+
+
+
+  const submitFormTo = ({ login, password }) => {
+    dispatch(requestLogin(login, password))
+    history.push('/')
+  };
+
+
   return (
     <>
       <Formik
@@ -28,7 +48,7 @@ const LoginForm = () => {
           password: "",
         }}
         validationSchema={LoginSchema}
-        // onSubmit={submitFormTo}
+        onSubmit={submitFormTo}
       >
         {(formik) => {
           return (
