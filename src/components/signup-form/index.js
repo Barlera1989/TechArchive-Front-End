@@ -16,8 +16,8 @@ const theme = createMuiTheme({
 });
 
 const submitFormTo = (data) => {
-  // console.log(data);
-  axios.post("https://tech-archive-project.herokuapp.com//user", data).then((res) => {
+  console.log(data);
+  axios.post("https://tech-archive-project.herokuapp.com/user/create", data).then((res) => {
     console.log(res);
   });
 };
@@ -31,9 +31,6 @@ const LoginSchema = Yup.object({
     .required("Field can't be empty")
     .min(6, "Please enter your full name"),
   description: Yup.string().required("Field can't be empty"),
-  confirm_password: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Field can't be empty"),
 });
 
 const SignUpForm = () => {
@@ -45,7 +42,6 @@ const SignUpForm = () => {
           description: "",
           email: "",
           password: "",
-          confirm_password: "",
         }}
         validationSchema={LoginSchema}
         onSubmit={submitFormTo}
@@ -81,15 +77,6 @@ const SignUpForm = () => {
                 component={TextField}
                 name="password"
                 placeholder="Password"
-                fullWidth={true}
-                margin="normal"
-                variant="outlined"
-                type="password"
-              />
-              <Field
-                component={TextField}
-                name="confirm_password"
-                placeholder="Password Confirmation"
                 fullWidth={true}
                 margin="normal"
                 variant="outlined"
