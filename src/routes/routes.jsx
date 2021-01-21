@@ -16,7 +16,7 @@ const Routes = () => {
         {window.innerWidth > 640 ? <Header /> : <HeaderMob />}
         <MainPage />
       </Route>
-      <Route exact path="/newsId">
+      <Route path="/newsId/:id">
         {window.innerWidth > 640 ? <Header /> : <HeaderMob />}
         <NewsPage />
       </Route>

@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { logout } from '../../redux/actions'
+import publicidade from "../../publicidade3.png"
 
 import {
   StyledHeader,
@@ -32,6 +33,10 @@ const Header = () => {
     history.push('/sign_up')
   }
 
+  const GoToHome = () => {
+    history.push('')
+  }
+
 
   const GoToPostNews = () => {
     history.push('/post_news')
@@ -42,7 +47,7 @@ const Header = () => {
     <StyledHeader>
       <StyledUpperContent>
         <StyledLogo />
-        <StyledAdsDiv />
+        <StyledAdsDiv src={publicidade} />
         {!authenticate ?
           <StyledPublishButton>
             <StyledPublishContent onClick={() => GoToLogin()}>Login</StyledPublishContent>
@@ -58,7 +63,7 @@ const Header = () => {
       </StyledUpperContent>
       <StyledNavBar>
         <StyledLeftWing>
-          <StyledNavLink>Home</StyledNavLink>
+          <StyledNavLink onClick={() => GoToHome()}>Home</StyledNavLink>
           <StyledNavLink>Hot News</StyledNavLink>
           <StyledNavLink>Trends</StyledNavLink>
           <StyledNavLink>Hardware</StyledNavLink>

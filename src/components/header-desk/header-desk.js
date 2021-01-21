@@ -28,10 +28,10 @@ export const StyledLogo = styled.div`
   height: 100%;
 `;
 
-export const StyledAdsDiv = styled.div`
+export const StyledAdsDiv = styled.img`
   border: 1px solid black;
   width: 50%;
-  height: 80%;
+  height: 85%;
   background-color: #cccccc;
 `;
 
@@ -124,4 +124,7 @@ export const StyledNavLink = styled.div`
   text-align: center;
   line-height: 2;
   font-weight: bold;
+  :hover{
+    cursor: pointer
+  }
 `;
