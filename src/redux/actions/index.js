@@ -25,7 +25,7 @@ export const logout = () => (dispatch) => {
 
 
 export const requestLogin = (login, password) => (dispatch) => {
-  axios.post("http://127.0.0.1:5000/login", { 'email': login, 'password': password })
+  axios.post("https://tech-archive-project.herokuapp.com//login", { 'email': login, 'password': password })
     .then((res) => {
       dispatch(DoLogin(res.data.token))
       window.localStorage.setItem("Token", res.data.token)
