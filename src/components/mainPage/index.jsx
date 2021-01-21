@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react"
-import { useHistory, useParams } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import NewsComponent from '../newsComponent'
 import propaganda from "../../publicidade2.png"
 import axios from 'axios'
