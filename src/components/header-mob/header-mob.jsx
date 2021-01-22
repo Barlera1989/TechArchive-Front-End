@@ -22,7 +22,9 @@ const HeaderMob = () => {
           <StyledSearchInput />
           <StyledSearchImg />
         </StyledSearchDiv>
-        <StyledPublishButton>Login <br></br> SignUp </StyledPublishButton>
+        <StyledPublishButton>
+          Login <br></br> SignUp{" "}
+        </StyledPublishButton>
       </StyledUpperContent>
       <StyledNavBar>
         <StyledLeftWing>
@@ -36,7 +38,9 @@ const HeaderMob = () => {
           <StyledNavLink>Security</StyledNavLink>
           <StyledNavLink>Gaming</StyledNavLink>
           <StyledNavLink>Ranking</StyledNavLink>
-          <StyledNavLink>Profile</StyledNavLink>
+          <a href="/profile">
+            <StyledNavLink>Profile</StyledNavLink>
+          </a>
         </StyledRightWing>
       </StyledNavBar>
     </StyledHeader>

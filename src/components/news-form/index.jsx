@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +30,41 @@ const LoginSchema = Yup.object({
 });
 
 const NewsForm = () => {
+  const history = useHistory();
+
+  const createNews = (data) => {
+    const options = {
+      method: "POST",
+      url: "https://tech-archive-project.herokuapp.com/news/create",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("Token")}`,
+      },
+      data: {
+        title: data["title"],
+        subtitle: data["subtitle"],
+        content: data["news"],
+        upvotes: 0,
+        downvotes: 0,
+        approved: false,
+      },
+    };
+
+    axios
+      .request(options)
+      .then(function (response) {
+        console.log(response.data);
+        returnPage();
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  };
+
+  const returnPage = () => {
+    history.push("/");
+  };
+
   return (
     <>
       <Formik
@@ -37,7 +74,7 @@ const NewsForm = () => {
           category: "",
         }}
         validationSchema={LoginSchema}
-        // onSubmit={submitFormTo}
+        onSubmit={createNews}
       >
         {(formik) => {
           return (
@@ -98,6 +135,17 @@ const NewsForm = () => {
                   style={{ marginLeft: 30 }}
                 >
                   Submit
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  disabled={!formik.isValid}
+                  size="large"
+                  type="submit"
+                  style={{ marginLeft: 30 }}
+                  onClick={() => returnPage()}
+                >
+                  Voltar
                 </Button>
               </ThemeProvider>
             </Form>
