@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/actions";
 import publicidade from "../../publicidade3.png";
+import axios from "axios";
 
 import {
   StyledHeader,
@@ -20,7 +21,9 @@ import {
   StyledPublishContent,
 } from "./header-desk.js";
 
-const Header = () => {
+const Header = ({ news, setNews, updateNews }) => {
+  const [search, setSearch] = useState("");
+
   const authenticate = useSelector(
     (state) => state.authenticate.isAuthenticated
   );
@@ -41,6 +44,29 @@ const Header = () => {
 
   const GoToPostNews = () => {
     history.push("/post_news");
+  };
+
+  const SearchNews = (query) => {
+    console.log(news);
+
+    if (news && query !== "") {
+      const filtered_news = news.filter((currentNews) => {
+        if (currentNews.title.toLowerCase().includes(query.toLowerCase())) {
+          return currentNews;
+        }
+      });
+
+      if (filtered_news.length > 0) {
+        console.log(query);
+        console.log(filtered_news);
+        setNews(filtered_news);
+      } else {
+        alert("Nenhuma Notícia encontrada!");
+        updateNews();
+      }
+    } else {
+      updateNews();
+    }
   };
 
   return (
@@ -76,8 +102,11 @@ const Header = () => {
           <StyledNavLink>Hardware</StyledNavLink>
         </StyledLeftWing>
         <StyledSearchDiv>
-          <StyledSearchInput />
-          <StyledSearchImg />
+          <StyledSearchInput
+            value={search}
+            onChange={(evt) => setSearch(evt.target.value)}
+          />
+          <StyledSearchImg onClick={() => SearchNews(search)} />
         </StyledSearchDiv>
         <StyledRightWing>
           <StyledNavLink>Security</StyledNavLink>

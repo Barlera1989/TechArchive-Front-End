@@ -23,44 +23,12 @@ import {
   MainPageDivision,
 } from "./styles";
 
-const MainPage = () => {
-  const [allNews, setAllNews] = useState([]);
+const MainPage = ({ users, news }) => {
   const history = useHistory();
-  const [users, setUsers] = useState([]);
-  const headers = { "Access-Control-Allow-Origin": "*" };
-
-  const getNewsData = () => {
-    axios
-      .get(`https://tech-archive-project.herokuapp.com/news/`, headers)
-      .then((resp) => {
-        setAllNews(resp.data.data);
-        getAllUsers();
-      })
-      .catch((error) => {
-        // erro no request
-        console.log(error);
-      });
-  };
-
-  const getAllUsers = () => {
-    axios
-      .get(`https://tech-archive-project.herokuapp.com/user/all`, headers)
-      .then((res) => {
-        setUsers(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
 
   const GoToNewsPage = (index) => {
     history.push(`/newsId/${index + 1}`);
   };
-
-  useEffect(() => {
-    getNewsData();
-    console.log(allNews);
-  }, []);
 
   return (
     <div>
@@ -70,7 +38,7 @@ const MainPage = () => {
 
           <MainPageNewsContainer>
             <MainPageNews>
-              {allNews.map((news, index) => (
+              {news.map((news, index) => (
                 <NewsMainContainer
                   key={index}
                   onClick={() => GoToNewsPage(index)}
@@ -93,7 +61,7 @@ const MainPage = () => {
             </MainPageNews>
             <MainPageDivision></MainPageDivision>
             <MainPageNews>
-              {allNews.reverse().map((news, index) => (
+              {news.reverse().map((news, index) => (
                 <NewsMainContainer
                   key={index}
                   onClick={() => GoToNewsPage(index)}

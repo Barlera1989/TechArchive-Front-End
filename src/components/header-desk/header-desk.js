@@ -42,6 +42,7 @@ export const StyledPublishButton = styled.button`
   background-color: #cc3c3c;
   color: white;
   font-weight: bold;
+  cursor: pointer;
 `;
 
 export const StyledPublishContent = styled.div`
@@ -105,6 +106,7 @@ export const StyledSearchImg = styled.div`
   margin-left: 10px;
   width: 45px;
   height: 70%;
+  cursor: pointer;
 `;
 
 export const StyledNavLink = styled.div`
