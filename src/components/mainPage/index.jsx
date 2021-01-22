@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import NewsComponent from "../newsComponent";
 import propaganda from "../../publicidade2.png";
-import axios from "axios";
 import image from "../../image.jpg";
 
 import {
