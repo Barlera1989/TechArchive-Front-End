@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +29,12 @@ const LoginSchema = Yup.object({
 });
 
 const NewsForm = () => {
+  const history = useHistory();
+
+  const returnPage = () => {
+    history.push("/");
+  };
+
   return (
     <>
       <Formik
@@ -98,6 +105,17 @@ const NewsForm = () => {
                   style={{ marginLeft: 30 }}
                 >
                   Submit
+                </Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  disabled={!formik.isValid}
+                  size="large"
+                  type="submit"
+                  style={{ marginLeft: 30 }}
+                  onClick={() => returnPage()}
+                >
+                  Voltar
                 </Button>
               </ThemeProvider>
             </Form>

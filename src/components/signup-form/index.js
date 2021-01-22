@@ -6,6 +6,8 @@ import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { Button } from "@material-ui/core";
 import axios from "axios";
+import { BlockSpace } from "./styled";
+import { useHistory } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -17,9 +19,11 @@ const theme = createMuiTheme({
 
 const submitFormTo = (data) => {
   console.log(data);
-  axios.post("https://tech-archive-project.herokuapp.com/user/create", data).then((res) => {
-    console.log(res);
-  });
+  axios
+    .post("https://tech-archive-project.herokuapp.com/user/create", data)
+    .then((res) => {
+      console.log(res);
+    });
 };
 
 const LoginSchema = Yup.object({
@@ -34,6 +38,12 @@ const LoginSchema = Yup.object({
 });
 
 const SignUpForm = () => {
+  const history = useHistory();
+
+  const returnPage = () => {
+    history.push("/");
+  };
+
   return (
     <>
       <Formik
@@ -97,6 +107,15 @@ const SignUpForm = () => {
                   fullWidth={true}
                 >
                   Submit
+                </Button>
+                <BlockSpace />
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  fullWidth={true}
+                  onClick={() => returnPage()}
+                >
+                  Voltar
                 </Button>
               </ThemeProvider>
             </Form>
