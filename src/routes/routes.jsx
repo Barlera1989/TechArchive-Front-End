@@ -8,6 +8,7 @@ import HeaderMob from "../components/header-mob/header-mob.jsx";
 import MainPage from "../components/mainPage";
 import NewsPage from "../components/newsPage";
 import axios from "axios";
+import Profile from "../pages/profile";
 
 const Routes = () => {
   const [allNews, setAllNews] = useState([]);
@@ -57,7 +58,9 @@ const Routes = () => {
         {window.innerWidth > 640 ? <Header /> : <HeaderMob />}
         <NewsPage />
       </Route>
-      <Route exact path="/profile"></Route>
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
       <Route exact path="/login">
         <Login />
       </Route>

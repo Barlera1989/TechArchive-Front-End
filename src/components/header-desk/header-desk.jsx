@@ -112,7 +112,10 @@ const Header = ({ news, setNews, updateNews }) => {
           <StyledNavLink>Security</StyledNavLink>
           <StyledNavLink>Gaming</StyledNavLink>
           <StyledNavLink>Ranking</StyledNavLink>
-          <StyledNavLink>Profile</StyledNavLink>
+          <a href="/profile" style={{ marginLeft: -50 }}>
+            {" "}
+            <StyledNavLink>Profile</StyledNavLink>{" "}
+          </a>
         </StyledRightWing>
       </StyledNavBar>
     </StyledHeader>
