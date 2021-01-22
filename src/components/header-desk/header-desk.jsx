@@ -1,7 +1,7 @@
 import React from "react";
-import { useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { logout } from '../../redux/actions'
+import { useHistory } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../redux/actions";
 
 import {
   StyledHeader,
@@ -20,41 +20,48 @@ import {
 } from "./header-desk.js";
 
 const Header = () => {
-  const authenticate = useSelector((state) => state.authenticate.isAuthenticated)
+  const authenticate = useSelector(
+    (state) => state.authenticate.isAuthenticated
+  );
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
   const GoToLogin = () => {
-    history.push('/login')
-  }
+    history.push("/login");
+  };
 
   const GoToSignUp = () => {
-    history.push('/sign_up')
-  }
-
+    history.push("/sign_up");
+  };
 
   const GoToPostNews = () => {
-    history.push('/post_news')
-  }
-
+    history.push("/post_news");
+  };
 
   return (
     <StyledHeader>
       <StyledUpperContent>
         <StyledLogo />
         <StyledAdsDiv />
-        {!authenticate ?
+        {!authenticate ? (
           <StyledPublishButton>
-            <StyledPublishContent onClick={() => GoToLogin()}>Login</StyledPublishContent>
-            <StyledPublishContent onClick={() => GoToSignUp()}>SignUp</StyledPublishContent>
+            <StyledPublishContent onClick={() => GoToLogin()}>
+              Login
+            </StyledPublishContent>
+            <StyledPublishContent onClick={() => GoToSignUp()}>
+              SignUp
+            </StyledPublishContent>
           </StyledPublishButton>
-          :
-
+        ) : (
           <StyledPublishButton>
-            <StyledPublishContent onClick={() => GoToPostNews()}>Publish Now</StyledPublishContent>
-            <StyledPublishContent onClick={() => dispatch(logout())}>Log out</StyledPublishContent>
-          </StyledPublishButton>}
-
+            <StyledPublishContent onClick={() => GoToPostNews()}>
+              Publish Now
+            </StyledPublishContent>
+            <StyledPublishContent onClick={() => dispatch(logout())}>
+              Log out
+            </StyledPublishContent>
+          </StyledPublishButton>
+        )}
       </StyledUpperContent>
       <StyledNavBar>
         <StyledLeftWing>
@@ -71,7 +78,10 @@ const Header = () => {
           <StyledNavLink>Security</StyledNavLink>
           <StyledNavLink>Gaming</StyledNavLink>
           <StyledNavLink>Ranking</StyledNavLink>
-          <StyledNavLink>Profile</StyledNavLink>
+          <a href="/profile" style={{ marginLeft: -50 }}>
+            {" "}
+            <StyledNavLink>Profile</StyledNavLink>{" "}
+          </a>
         </StyledRightWing>
       </StyledNavBar>
     </StyledHeader>

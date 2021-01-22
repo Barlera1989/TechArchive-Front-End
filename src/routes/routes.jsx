@@ -5,9 +5,9 @@ import SignUp from "../pages/sign-up";
 import CreateNews from "../pages/create-news";
 import Header from "../components/header-desk/header-desk.jsx";
 import HeaderMob from "../components/header-mob/header-mob.jsx";
-import MainPage from '../components/mainPage'
-import NewsPage from '../components/newsPage'
-
+import MainPage from "../components/mainPage";
+import NewsPage from "../components/newsPage";
+import Profile from "../pages/profile";
 
 const Routes = () => {
   return (
@@ -20,7 +20,9 @@ const Routes = () => {
         {window.innerWidth > 640 ? <Header /> : <HeaderMob />}
         <NewsPage />
       </Route>
-      <Route exact path="/profile"></Route>
+      <Route exact path="/profile">
+        <Profile />
+      </Route>
       <Route exact path="/login">
         <Login />
       </Route>

@@ -1,8 +1,8 @@
-import axios from 'axios'
-export const TRUE = 'TRUE'
-export const FALSE = 'FALSE'
+import axios from "axios";
+export const TRUE = "TRUE";
+export const FALSE = "FALSE";
 export const LOGIN = "LOGIN";
-export const LOGOUT = 'LOGOUT'
+export const LOGOUT = "LOGOUT";
 
 export const DoLogin = (token) => ({
   type: LOGIN,
@@ -10,35 +10,34 @@ export const DoLogin = (token) => ({
 });
 
 export const setAuthenticationFalse = () => ({
-  type: FALSE
+  type: FALSE,
 });
 
 export const setAuthenticationTrue = () => ({
-  type: TRUE
+  type: TRUE,
 });
 
 export const logout = () => (dispatch) => {
   localStorage.clear();
   dispatch({ type: LOGOUT });
-  dispatch(setAuthenticationFalse())
+  dispatch(setAuthenticationFalse());
 };
 
-
 export const requestLogin = (login, password) => (dispatch) => {
-  axios.post("http://127.0.0.1:5000/login", { 'email': login, 'password': password })
+  axios
+    .post("http://127.0.0.1:5000/login", { email: login, password: password })
     .then((res) => {
-      dispatch(DoLogin(res.data.token))
-      window.localStorage.setItem("Token", res.data.token)
+      dispatch(DoLogin(res.data.token));
+      window.localStorage.setItem("Token", res.data.token);
 
-      console.log('Logado!')
-      console.log(res.data)
+      console.log("Logado!");
+      console.log(res.data);
 
-      dispatch(setAuthenticationTrue())
+      dispatch(setAuthenticationTrue());
     })
     .catch((res) => {
-      console.log(res)
-      console.log('Erro de login')
-      dispatch(setAuthenticationFalse())
-    }
-    )
+      console.log(res);
+      console.log("Erro de login");
+      dispatch(setAuthenticationFalse());
+    });
 };
