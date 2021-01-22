@@ -5,6 +5,9 @@ import * as Yup from "yup";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import { Button } from "@material-ui/core";
+import axios from "axios";
+import { BlockSpace } from "./styled";
+import { useHistory } from "react-router-dom";
 
 const theme = createMuiTheme({
   palette: {
@@ -14,6 +17,15 @@ const theme = createMuiTheme({
   },
 });
 
+const submitFormTo = (data) => {
+  console.log(data);
+  axios
+    .post("https://tech-archive-project.herokuapp.com/user/create", data)
+    .then((res) => {
+      console.log(res);
+    });
+};
+
 const LoginSchema = Yup.object({
   email: Yup.string().email("Invalid E-mail").required("Field can't be empty"),
   password: Yup.string()
@@ -22,30 +34,27 @@ const LoginSchema = Yup.object({
   name: Yup.string()
     .required("Field can't be empty")
     .min(6, "Please enter your full name"),
-  role: Yup.string().required("Field can't be empty"),
-  age: Yup.string()
-    .required("Field can't be empty")
-    .matches(/(^[0-9]*$)/, "Please enter only numbers")
-    .max(3, "Age must be at most 3 characters"),
-  confirm_password: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Passwords must match")
-    .required("Field can't be empty"),
+  description: Yup.string().required("Field can't be empty"),
 });
 
 const SignUpForm = () => {
+  const history = useHistory();
+
+  const returnPage = () => {
+    history.push("/");
+  };
+
   return (
     <>
       <Formik
         initialValues={{
           name: "",
-          age: "",
-          role: "",
+          description: "",
           email: "",
           password: "",
-          confirm_password: "",
         }}
         validationSchema={LoginSchema}
-        // onSubmit={submitFormTo}
+        onSubmit={submitFormTo}
       >
         {(formik) => {
           return (
@@ -60,16 +69,8 @@ const SignUpForm = () => {
               />
               <Field
                 component={TextField}
-                name="age"
-                placeholder="Age"
-                fullWidth={true}
-                margin="normal"
-                variant="outlined"
-              />
-              <Field
-                component={TextField}
-                name="role"
-                placeholder="Role"
+                name="description"
+                placeholder="description"
                 fullWidth={true}
                 margin="normal"
                 variant="outlined"
@@ -91,15 +92,6 @@ const SignUpForm = () => {
                 variant="outlined"
                 type="password"
               />
-              <Field
-                component={TextField}
-                name="confirm_password"
-                placeholder="Password Confirmation"
-                fullWidth={true}
-                margin="normal"
-                variant="outlined"
-                type="password"
-              />
 
               <br />
               <br />
@@ -115,6 +107,15 @@ const SignUpForm = () => {
                   fullWidth={true}
                 >
                   Submit
+                </Button>
+                <BlockSpace />
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  fullWidth={true}
+                  onClick={() => returnPage()}
+                >
+                  Voltar
                 </Button>
               </ThemeProvider>
             </Form>
