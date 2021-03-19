@@ -5,8 +5,7 @@ import {
   Name,
   Role,
   MainDiv,
-  NewAvatar,
-  BodyDiv,
+  BodyDiv
 } from "./style";
 import Card from "./card";
 import Avatar from "../../assets/images/avatar.png";
@@ -15,7 +14,7 @@ const ProfileLayout = () => {
     <MainDiv>
       <HeaderDiv>
         <img
-          src={Avatar}
+          src={Avatar} alt=''
           style={{ width: 150, height: 150, marginTop: 50, marginLeft: 50 }}
         />
         <NameRole>

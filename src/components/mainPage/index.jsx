@@ -29,12 +29,12 @@ const MainPage = ({ users, news }) => {
     history.push(`/newsId/${index + 1}`);
   };
 
+
   return (
     <div>
       {window.innerWidth > 640 ? (
         <MainPageContainer>
           <MainPageAdvertising src={propaganda} />
-
           <MainPageNewsContainer>
             <MainPageNews>
               {news.map((news, index) => (
@@ -50,6 +50,7 @@ const MainPage = ({ users, news }) => {
                         if (id === news.author) {
                           return name;
                         }
+                        return ''
                       })}
                       ,{news.create_at}
                     </NewsTextAuthorDate>
@@ -73,6 +74,7 @@ const MainPage = ({ users, news }) => {
                         if (id === news.author) {
                           return name;
                         }
+                        return ''
                       })}
                       ,{news.create_at}
                     </NewsTextAuthorDate>
@@ -85,14 +87,14 @@ const MainPage = ({ users, news }) => {
           <MainPageAdvertising src={propaganda} />
         </MainPageContainer>
       ) : (
-        <MainPageContainer>
-          <MainPageNews>
-            <NewsComponent />
-            <NewsComponent />
-            <NewsComponent />
-          </MainPageNews>
-        </MainPageContainer>
-      )}
+          <MainPageContainer>
+            <MainPageNews>
+              <NewsComponent />
+              <NewsComponent />
+              <NewsComponent />
+            </MainPageNews>
+          </MainPageContainer>
+        )}
     </div>
   );
 };

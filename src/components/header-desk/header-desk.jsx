@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/actions";
 import publicidade from "../../publicidade3.png";
-import axios from "axios";
 
 import {
   StyledHeader,
@@ -54,6 +53,7 @@ const Header = ({ news, setNews, updateNews }) => {
         if (currentNews.title.toLowerCase().includes(query.toLowerCase())) {
           return currentNews;
         }
+        return ''
       });
 
       if (filtered_news.length > 0) {
@@ -84,15 +84,15 @@ const Header = ({ news, setNews, updateNews }) => {
             </StyledPublishContent>
           </StyledPublishButton>
         ) : (
-          <StyledPublishButton>
-            <StyledPublishContent onClick={() => GoToPostNews()}>
-              Publish Now
+            <StyledPublishButton>
+              <StyledPublishContent onClick={() => GoToPostNews()}>
+                Publish Now
             </StyledPublishContent>
-            <StyledPublishContent onClick={() => dispatch(logout())}>
-              Log out
+              <StyledPublishContent onClick={() => dispatch(logout())}>
+                Log out
             </StyledPublishContent>
-          </StyledPublishButton>
-        )}
+            </StyledPublishButton>
+          )}
       </StyledUpperContent>
       <StyledNavBar>
         <StyledLeftWing>
